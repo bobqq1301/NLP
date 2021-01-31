@@ -122,6 +122,33 @@
 | 参数名 | 类型 | 默认值 | 作用
 | --- | --- | --- | ---
 | `--reduce_lr_on_plateau` | `bool` | `False` | 在到达高峰时启用降低学习率机制<br>在loss数代没有改善时启用
+| `--plateau_epochs` | `int` | `10` | RLROP的启用代数<br>必须小于`--es_epochs`
+| `--plateau_reduction` | `float` | `0.1` | 高峰发生时适用于当前学习率的乘法因子
+| `--force_initialize_learning_rate` | `bool` | `False` | 对以前降低的学习率强制重新初始化
+
+### Decoder
+| 参数名 | 类型 | 默认值 | 作用
+| --- | --- | --- | ---
+| `--bytes_output_mode` | `bool` | `False` | 启用字节输出模式，模型将直接输出UTF-8字节值而非字母映射<br>`--alphabet_config_path`将被忽略
+| `--alphabet_config_path` | `string` | `data/alphabet.txt` | 指定网络使用的字母配置文件路径
+| `--scorer_path` | `string` |  | 外部计分器文件路径
+| `--beam_width` | `int` | `1024` | 建立候选转录时CTC decoder使用的beam width
+| `--lm_alpha` | `float` | `0.931289039105002` | CTC decoder的alpha超参，语言模型权重
+| `--lm_beta` | `float` | `1.1834137581510284` | CTC decoder的beta超参，词插入权重
+| `--cutoff_prob` | `float` | `1.0` | 到达概率质量之前仅考虑字符<br>`1.0`不启用
+| `--cutoff_top_n` | `int` | `300` | 每个时间步仅处理按概率质量排序的此数量的字符<br>大于字母大小时不可用
+
+### Inference Mode
+| 参数名 | 类型 | 默认值 | 作用
+| --- | --- | --- | ---
+| `--one_shot_infer` | `string` |  | 指定一个`.wav`文件，加载checkpoint并执行inference
+
+### Optimizer Mode
+| 参数名 | 类型 | 默认值 | 作用
+| --- | --- | --- | ---
+| `--lm_alpha_max` | `float` | `5.0` | `--lm_alpha`的最大值
+| `--lm_beta_max` | `float` | `5.0` | `--lm_beta`的最大值
+| `--n_trials` | `int` | `2400` | 超参优化期间运行的试验次数
 
 ## 参数说明
 * `--feature_cache`
