@@ -47,6 +47,8 @@ In this step, the OL system tries to extract complex relationships from text. Ap
 
 ## C-value / NC-value method
 
+[C-value / NC-value](./[210325]C-value_NC-value.md)
+
 ## Hierarchical clustering
 
 ## Sub- or supersumption relationships
